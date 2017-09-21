@@ -28,6 +28,10 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'koala'
+gem 'slim'
+gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'pry'

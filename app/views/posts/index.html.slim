@@ -1,0 +1,10 @@
+.container
+  .col-md-5
+    .panel.panel-default
+      .panel-body
+        - if @posts.present?
+          - @posts.each do |post|
+            = render partial: 'post', locals: { post: post }
+        - else
+          p
+            | Posts are not found

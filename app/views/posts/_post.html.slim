@@ -1,0 +1,34 @@
+section.post-heading
+  .row
+    .col-md-11
+      .media
+        .media-left
+          a href="#"
+            img.media-object.photo-profile alt="..." height="40" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="40" /
+        .media-body
+          a.anchor-username href="#" /
+          h4.media-heading You
+          /a.anchor-time href="#"  51 mins
+    .col-md-1
+      a href="#"
+        i.glyphicon.glyphicon-chevron-down
+section.post-body
+  p
+    = post.message
+section.post-footer
+  hr/
+  .post-footer-option.container
+    ul.list-unstyled
+      li
+        span
+          i.glyphicon.glyphicon-thumbs-up
+          = " #{post.likes}"
+      li
+        span
+          i.glyphicon.glyphicon-share-alt
+          = " #{post.shares}"
+  - unless post.comments.count.zero?
+    .post-footer-comment-wrapper
+      .comment-form
+      - post.comments.each do |comment|
+        = render partial: 'comment', locals: { comment: comment }

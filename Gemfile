@@ -27,6 +27,7 @@ gem 'turbolinks', '~> 5'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'koala'
 
 group :development, :test do
   gem 'pry'

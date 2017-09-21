@@ -6,9 +6,16 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
 
   def self.from_omniauth(auth)
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-    end
+      user = find_by(provider: auth.provider, uid: auth.uid)
+      if user
+        user.update(oauth_token: auth.credentials.token)
+        user
+      else
+        User.create!(email: auth.info.email,
+          password: Devise.friendly_token[0,20],
+          provider: auth.provider,
+          uid: auth.uid,
+          oauth_token: auth.credentials.token)
+      end
   end
 end
